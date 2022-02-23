@@ -74,8 +74,11 @@ def span_calc(n, a, b, f):
 
 	Returns: the value of W(n).
 	"""
-	# TODO
-	pass
+  if(n <= 1):
+    return f(n)
+  else:
+    totalSpan = span_calc(n//b, a, b)+f(n)
+    return totalSpan
 
 
 def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
