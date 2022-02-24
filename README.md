@@ -48,13 +48,51 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-We have tested all three functions (1, n, logn ) and they demonstrated that total work calculated matches th asymptotic behavior illustrated by Big O. For instance, n=1 is the smallest amount of total work as we expect. Due to no branching or recursion needing to be performed. Second in total work comes log(n), followed by n. 
+We have tested all three functions (1, n, logn ) and they demonstrated that total work calculated matches the asymptotic behavior expected by Big O. For instance, n=1 is the smallest amount of total work as we expect, and it does not blow up at any values of n relatively speaking.  Second in total work comes log(n), which shows an increase of less than O(n) as expected, and the values calculated at the larger values of n match up as expected. Lastly, the work of O(n) was found to be the greatest as expected, and it increased linearly with different values of n.
 
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
-**TODO: your answer goes here**
+As you can see in the graphs below, c<log_b(a) and when c=log_b(a), the asymptotic behavior is relatively steady. Neither blow up extremely when n is very large. On the other hand, when c is set to be greater than log_b(a) the total work blows up with large values of n. this aligns with what we expected for the asymptotic behaviors orignially.
+
+|     n |    c<log_b(a) |    c>log_b(a) |
+|-------|---------------|---------------|
+|    10 |       185.599 |          1692 |
+|    20 |       831.839 |         14768 |
+|    50 |      4813.480 |        236908 |
+|   100 |     20253.920 |       1947632 |
+|  1000 |   1674822.842 |    1987993280 |
+|  5000 |  62313354.782 |  249711292352 |
+| 10000 | 250253419.128 | 1998845169408 |
+|     n |.   c=log_b(a) |
+|-------|.  ------------|
+|    10 |.          328 |
+|    20 |.         1712 |
+|    50 |.        12936 |
+|   100 |         61744 |
+|  1000 |       8544512 |
+|  5000 |     294904064 |
+| 10000 |    1279616256 |
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
-**TODO: your answer goes here**
+The span for everything matches up as expected. When f(n)=1, the span is very small and is only 14 for large values of n. The same goes for log(n) which has relatively small values for span that dont blow up. The span of n grows nearly linearly, but not exactly which is expected due to machine cost differing. The span of n*n blows up for large values of n, which is expected even with span.
+
+|     n |f(n)=1 |f(n)=log(n) |
+|-------|-------|--------|
+|    10 |     4 |  5.605 |
+|    20 |     5 |  8.601 |
+|    50 |     6 | 13.506 |
+|   100 |     7 | 18.111 |
+|  1000 |    10 | 37.786 |
+|  5000 |    13 | 56.944 |
+| 10000 |    14 | 66.154 |
+|     n |f(n)=n | f(n)=n*n |
+|-------|-------|-----------|
+|    10 |    18 |       130 |
+|    20 |    38 |       530 |
+|    50 |    97 |      3315 |
+|   100 |   197 |     13315 |
+|  1000 |  1994 |   1333214 |
+|  5000 |  9995 |  33332873 |
+| 10000 | 19995 | 133332873 |

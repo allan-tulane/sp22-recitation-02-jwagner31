@@ -59,6 +59,7 @@ def test_work():
   assert work_calc(10, 2, 2,lambda n: 1) == 15
   assert work_calc(20, 1, 2, lambda n: n*n) == 530
   assert work_calc(30, 3, 2, lambda n: n) == 300
+  assert work_calc(40, 3, 2, lambda n:n**n)==520
   
   #test cases for question 4
   assert work_calc(40, 2, 2, lambda n: 1) == 63
@@ -126,15 +127,15 @@ def test_compare_work():
   res2 = compare_work(work_fn2, work_fn3)
   print_results(res)
   print_results(res2)
-test_compare_work()
+#test_compare_work()
 
 def test_compare_span():
   span_fn1 = lambda n:span_calc(n,2,2,lambda n:1)
   span_fn2 = lambda n:span_calc(n,2,2,lambda n:math.log(n))
-  res = compare_span(span_fn1, span_fn2)
-  span_fn3 = lambda n:span_calc(n,2, 2, lambda n:n))
-  span_fn4 = lambda n:span_calc(n,2, 2, lambda n:n*n))
-  res2 = compare_span(span_fn3, span_fn4)
+  res = compare_work(span_fn1, span_fn2)
+  span_fn3 = lambda n:span_calc(n,2, 2, lambda n:n)
+  span_fn4 = lambda n:span_calc(n,2, 2, lambda n:n*n)
+  res2 = compare_work(span_fn3, span_fn4)
   print_results(res)
   print_results(res2)
 
